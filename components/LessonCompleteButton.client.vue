@@ -13,6 +13,7 @@
       class="hidden"
     />
     {{ modelValue ? 'Completed!' : 'Mark as complete' }}
+
   </label>
 </template>
 
