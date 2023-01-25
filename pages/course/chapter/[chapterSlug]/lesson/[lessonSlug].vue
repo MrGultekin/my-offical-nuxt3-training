@@ -57,10 +57,14 @@ const title = computed(() => {
 useHead({
   title,
 })
+//change into useLocalStorage
+// const progress = useState('progress', () => {
+//  return [];
+// });
+const progress = useLocalStorage('progress', []);
 
-const progress = useState('progress', () => {
- return [];
-});
+
+
 // some couple of Guards before get the right value
 // if chapter dosent exist
 const isLessonComplete = computed(() => {
