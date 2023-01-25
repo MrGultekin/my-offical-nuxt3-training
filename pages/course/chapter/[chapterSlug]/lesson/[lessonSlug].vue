@@ -25,6 +25,11 @@
         :videoId="lesson.videoId"
     />
     <p>{{ lesson.text }}</p>
+<!-- doesnt work v-modal anymore bcoz progress is too complex now  <LessonCompleteButton v-model="progress"/>-->
+    <LessonCompleteButton
+    :modelValue="isLessonComplete"
+    @update:modelValue="toggleComplete"
+    />
   </div>
 </template>
 
@@ -52,4 +57,38 @@ const title = computed(() => {
 useHead({
   title,
 })
+
+const progress = useState('progress', () => {
+ return [];
+});
+// some couple of Guards before get the right value
+// if chapter dosent exist
+const isLessonComplete = computed(() => {
+  if (!progress.value[chapter.value.number-1]) {
+    return false;
+  }
+  // if lesson dosent exist
+  // if (!progress.value[chapter.value.number-1].lessons[lesson.value.number-1]) {
+  //   return false;
+  // }
+
+  // if lesson dosent exist , same as above
+  if (!progress.value[chapter.value.number-1][lesson.value.number-1]) {
+    return false;
+  }
+  // if value exists than return the value
+  return progress.value[chapter.value.number-1][lesson.value.number-1];
+});
+
+// Similar Guards
+
+ const toggleComplete = () => {
+   //if chapter exists or not we create chapter array
+   if (!progress.value[chapter.value.number-1]) {
+     progress.value[chapter.value.number-1] = [];
+   }
+   // when chapter array exists then we set the value
+   progress.value[chapter.value.number-1][lesson.value.number-1] = !isLessonComplete.value;
+ };
+
 </script>
