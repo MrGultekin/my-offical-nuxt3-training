@@ -37,7 +37,9 @@
       </div>
 
       <div class="prose p-12 bg-white rounded-md w-[65ch]">
+
         <NuxtPage/>
+
       </div>
     </div>
   </div>
