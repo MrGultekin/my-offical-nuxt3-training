@@ -1,4 +1,5 @@
 # Watch the video to see how it works.
+# Chapter 1/6 completed
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
